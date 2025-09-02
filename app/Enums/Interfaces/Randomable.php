@@ -9,5 +9,5 @@ interface Randomable
      *
      * @return array|string|int|self
      */
-    public static function random();
+    public static function random(): array|string|int|self;
 }

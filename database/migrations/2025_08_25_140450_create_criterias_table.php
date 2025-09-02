@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('type');
+            $table->string('value_type');
             $table->unsignedInteger('weight'); // in range from 0 to 100
             $table->timestamps();
             $table->softDeletes();

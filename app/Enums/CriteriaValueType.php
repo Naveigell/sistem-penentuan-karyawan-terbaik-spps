@@ -4,7 +4,7 @@ namespace App\Enums;
 
 use App\Enums\Interfaces\Randomable;
 
-enum CriteriaType: string implements Randomable
+enum CriteriaValueType: string implements Randomable
 {
     case NOMINAL = 'nominal';
 
@@ -39,9 +39,9 @@ enum CriteriaType: string implements Randomable
     /**
      * Returns a random case from the current enum.
      *
-     * @return array|string|int|self|CriteriaType
+     * @return array|string|int|self|CriteriaValueType
      */
-    public static function random()
+    public static function random(): array|string|int|self|CriteriaValueType
     {
         return self::cases()[array_rand(self::cases())];
     }

@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-use App\Enums\CriteriaType;
+use App\Enums\CriteriaValueType;
 use Illuminate\Database\Eloquent\Model;
 
 class Criteria extends Model
 {
-    protected $fillable = ['name', 'type', 'weight', 'deleted_at'];
+    protected $fillable = ['name', 'type', 'value_typ', 'weight', 'deleted_at'];
 
     protected $casts = [
-        'type' =>  CriteriaType::class,
+        'type'       =>  CriteriaValueType::class,
+        'value_type' =>  CriteriaValueType::class,
     ];
 
     /**
