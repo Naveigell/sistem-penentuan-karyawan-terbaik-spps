@@ -7,6 +7,20 @@ use App\Utils\DecisionSupportSystem\Enums\CriteriaType;
 
 class Topsis extends DecisionSupportSystem
 {
+    private array $averages;
+
+    private array $weightedNormalizations;
+
+    private array $idealSolutions = [
+        "positive" => [],
+        "negative" => [],
+    ];
+
+    private array $idealSolutionResults = [
+        "positive" => 0,
+        "negative" => 0,
+    ];
+
     /**
      * Calculate the ranks of all alternatives.
      *
@@ -30,6 +44,9 @@ class Topsis extends DecisionSupportSystem
             $averages[$index] = round(sqrt($averages[$index]), $this->precision);
         }
 
+        // store the averages to easy access
+        $this->averages = $averages;
+
         $normalizations = [];
 
         // calculate the normalizations by looping through each alternative and each criterion
@@ -39,6 +56,9 @@ class Topsis extends DecisionSupportSystem
                 $normalizations[$alternative['id']][$index] = round($value / $averages[$index], $this->precision);
             }
         }
+
+        // store the normalizations to easy access
+        $this->normalization = $normalizations;
 
         // create a new variable to store the weighted normalizations
         $normalizationsWeighted = [];
@@ -50,6 +70,9 @@ class Topsis extends DecisionSupportSystem
                 $normalizationsWeighted[$normalizationIndex][$criterionIndex] = round($normalization[$criterionIndex] * $criterion['weight'], $this->precision);
             }
         }
+
+        // store the weighted normalizations to easy access
+        $this->weightedNormalizations = $normalizationsWeighted;
 
         // create variable to store solutions
         $idealPositiveSolutions =
@@ -74,6 +97,9 @@ class Topsis extends DecisionSupportSystem
             }
         }
 
+        $this->idealSolutions['positive'] = $idealPositiveSolutions;
+        $this->idealSolutions['negative'] = $idealNegativeSolutions;
+
         // create variable to store the positive and negative ideals
         $alternativePositiveIdeals =
         $alternativeNegativeIdeals = array_fill(0, count($this->criteria), 0);
@@ -93,6 +119,9 @@ class Topsis extends DecisionSupportSystem
             $alternativePositiveIdeals[$normalizationIndex] = round(sqrt($alternativePositiveIdeals[$normalizationIndex]), $this->precision);
             $alternativeNegativeIdeals[$normalizationIndex] = round(sqrt($alternativeNegativeIdeals[$normalizationIndex]), $this->precision);
         }
+
+        $this->idealSolutionResults['positive'] = $alternativePositiveIdeals;
+        $this->idealSolutionResults['negative'] = $alternativeNegativeIdeals;
 
         // looping the alternatives to give results into it,
         // the formula is
@@ -116,5 +145,58 @@ class Topsis extends DecisionSupportSystem
         });
 
         return $results;
+    }
+
+    /**
+     * Returns the ideal solutions calculated by the TOPSIS method.
+     *
+     * The ideal solutions are the positive and negative ideal solutions.
+     * The positive ideal solution is the best possible alternative
+     * and the negative ideal solution is the worst possible alternative.
+     *
+     * @return array The ideal solutions.
+     */
+    public function getIdealSolutions(): array
+    {
+        return $this->idealSolutions;
+    }
+
+    /**
+     * Returns the results of the ideal solutions calculated by the TOPSIS method.
+     *
+     * The results of the ideal solutions are the positive and negative ideal solutions
+     * that are calculated by the TOPSIS method.
+     *
+     * @return array The results of the ideal solutions.
+     */
+    public function getIdealSolutionResults(): array
+    {
+        return $this->idealSolutionResults;
+    }
+
+    /**
+     * Returns the weighted normalizations calculated by the TOPSIS method.
+     *
+     * The weighted normalizations are the normalizations multiplied by the weights of the criteria.
+     * The weighted normalizations are the values that are used to calculate the ideal solutions.
+     *
+     * @return array The weighted normalizations.
+     */
+    public function getWeightedNormalizations(): array
+    {
+        return $this->weightedNormalizations;
+    }
+
+    /**
+     * Returns the averages calculated by the TOPSIS method.
+     *
+     * The averages are the averages of the squared values of the alternatives.
+     * The averages are the values that are used to calculate the weighted normalizations.
+     *
+     * @return array The averages.
+     */
+    public function getAverages(): array
+    {
+        return $this->averages;
     }
 }

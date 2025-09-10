@@ -12,6 +12,8 @@ abstract class DecisionSupportSystem
 
     protected int $precision = 5;
 
+    protected array $normalization;
+
     /**
      * Constructs a DecisionSupportSystem object.
      *
@@ -100,6 +102,16 @@ abstract class DecisionSupportSystem
     public function setPrecision($precision)
     {
         $this->precision = $precision;
+    }
+
+    /**
+     * Returns the normalization of the DSS.
+     *
+     * @return array The normalization of the DSS.
+     */
+    public function getNormalization(): array
+    {
+        return $this->normalization;
     }
 
     /**

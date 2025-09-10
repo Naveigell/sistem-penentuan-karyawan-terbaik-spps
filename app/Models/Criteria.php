@@ -19,6 +19,18 @@ class Criteria extends Model
     ];
 
     /**
+     * Return the alphabet for this Criteria.
+     *
+     * If the Criteria's type is cost, return 'C', otherwise return 'B'.
+     *
+     * @return string
+     */
+    public function alphabet()
+    {
+        return $this->type->isCost() ? 'C' : 'B';
+    }
+
+    /**
      * The options that belong to the Criteria
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

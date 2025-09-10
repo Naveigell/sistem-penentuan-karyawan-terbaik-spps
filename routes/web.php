@@ -10,4 +10,8 @@ Route::name('admin.')->prefix('admin')->group(function () {
         ->shallow()
         ->parameters(['employee-criteria' => 'employee'])
         ->only('index', 'store');
+
+    Route::name('decision-support-systems.')->prefix('decision-support-systems')->group(function () {
+        Route::resource('topsis', \App\Http\Controllers\Admin\DecisionSupportSystem\TopsisController::class)->only('index');
+    });
 });
