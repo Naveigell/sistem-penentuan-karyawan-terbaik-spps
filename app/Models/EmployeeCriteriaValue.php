@@ -4,10 +4,11 @@ namespace App\Models;
 
 use App\Traits\Models\HasTableName;
 use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class EmployeeCriteriaValue extends Pivot
 {
-    use HasTableName;
+    use HasTableName, SoftDeletes;
 
     protected $table = 'employee_criteria_values';
 

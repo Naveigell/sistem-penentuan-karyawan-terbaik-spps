@@ -5,9 +5,12 @@ namespace App\Models;
 use App\Enums\CriteriaValueType;
 use App\Utils\DecisionSupportSystem\Enums\CriteriaType;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Criteria extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = ['name', 'type', 'value_type', 'weight', 'deleted_at'];
 
     protected $casts = [

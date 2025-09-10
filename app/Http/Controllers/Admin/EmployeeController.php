@@ -13,7 +13,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::with('user')->paginate()->withQueryString();
+        $employees = Employee::with('user')->latest()->paginate()->withQueryString();
 
         return view('admin.pages.employee.index', compact('employees'));
     }

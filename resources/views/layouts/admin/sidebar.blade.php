@@ -8,8 +8,10 @@
             <a href="{{ route('admin.employees.index') }}">SPK</a>
         </div>
         <ul class="sidebar-menu">
+            <li class="menu-header">Criteria</li>
+            <li class="@if (request()->routeIs('admin.criteria.*')) active @endif"><a class="nav-link" href="{{ route('admin.criteria.index') }}"><i class="fas fa-flag"></i> <span>Criteria</span></a></li>
             <li class="menu-header">Users</li>
-            <li class="@if (request()->routeIs('admin.employees.*')) active @endif"><a class="nav-link" href="{{ route('admin.employees.index') }}"><i class="fas fa-users"></i> <span>Karyawan</span></a></li>
+            <li class="@if (request()->routeIs('admin.employees.*')) active @endif"><a class="nav-link" href="{{ route('admin.employees.index') }}"><i class="fas fa-users"></i> <span>Employee</span></a></li>
             <li class="menu-header">Calculation</li>
 {{--            <li class="@if (request()->routeIs('admin.calcultions.simple-additive-weightings.*')) active @endif"><a class="nav-link" href="{{ route('admin.calcultions.simple-additive-weightings.index') }}"><i class="fa fa-leaf"></i> <span>SAW</span></a></li>--}}
 {{--            <li class="@if (request()->routeIs('admin.calcultions.mooras.*')) active @endif"><a class="nav-link" href="{{ route('admin.calcultions.mooras.index') }}"><i class="fa fa-history"></i> <span>Moora</span></a></li>--}}
