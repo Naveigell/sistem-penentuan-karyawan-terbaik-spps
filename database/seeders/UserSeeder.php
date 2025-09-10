@@ -15,8 +15,13 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        $faker = fake('id_ID');
+
         foreach (range(1, 5) as $item) {
-            $employee = Employee::create();
+            $phone   = $faker->unique()->phoneNumber();
+            $address = $faker->unique()->address();
+
+            $employee = Employee::create(compact('phone', 'address'));
 
             $this->createUser($employee);
         }

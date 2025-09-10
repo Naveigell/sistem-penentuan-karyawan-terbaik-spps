@@ -21,14 +21,15 @@ class CriteriaSeeder extends Seeder
         ];
 
         foreach ($criterias as $name) {
-            $type   = CriteriaValueType::random();
-            $weight = rand(1, 20);
+            $valueType    = CriteriaValueType::random();
+            $type         = CriteriaType::random()->value;
+            $weight       = rand(1, 20);
 
             $criteria = Criteria::create(array_merge(compact('name', 'type', 'weight'), [
-                'value_type' => CriteriaType::random()->value,
+                'value_type' => $valueType->value,
             ]));
 
-            if ($type->isOption()) {
+            if ($valueType->isOption()) {
                 foreach (range(1, 5) as $item) {
                     $label = "Option $item for $name";
                     $value = $item;
@@ -37,6 +38,11 @@ class CriteriaSeeder extends Seeder
                         'name' => Str::snake($label),
                     ], compact('label', 'value')));
                 }
+            } elseif ($valueType->isRange()) {
+                $min = rand(1, 100);
+                $max = rand($min + 1, $min + 1 + rand(1, 100));
+
+                $criteria->range()->create(compact('min', 'max'));
             }
         }
     }

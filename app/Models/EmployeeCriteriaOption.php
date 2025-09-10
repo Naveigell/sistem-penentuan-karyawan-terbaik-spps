@@ -9,6 +9,8 @@ class EmployeeCriteriaOption extends Pivot
 {
     use HasTableName;
 
+    protected $table = 'employee_criteria_options';
+
     protected $fillable = [
         'employee_id',
         'criteria_id',

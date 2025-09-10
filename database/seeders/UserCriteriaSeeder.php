@@ -14,23 +14,32 @@ class UserCriteriaSeeder extends Seeder
      */
     public function run(): void
     {
-        $users = User::whereEmployee()->get();
-        $criteria  = Criteria::with('options')->get();
+        $users    = User::whereEmployee()->get();
+        $criteria = Criteria::with('options', 'range')->get();
 
         foreach ($users as $user) {
             foreach ($criteria as $criterion) {
                 try {
-                    if ($criterion->type->isOption()) {
+                    if ($criterion->value_type->isOption()) {
                         $option = $criterion->options->random();
 
-                        $user->criteriaOptions()->sync([
+                        $user->criteriaOptions()->syncWithoutDetaching([
                             $criterion->id => [
                                 'criteria_option_id' => $option->id,
                                 'employee_id' => $user->userable->id,
                             ]
                         ]);
+                    } else if ($criterion->value_type->isRange()) {
+                        $range = $criterion->range;
+
+                        $user->criteriaValues()->syncWithoutDetaching([
+                            $criterion->id => [
+                                'value' => rand($range->min, $range->max),
+                                'employee_id' => $user->userable->id,
+                            ]
+                        ]);
                     } else {
-                        $user->criteriaValues()->sync([
+                        $user->criteriaValues()->syncWithoutDetaching([
                             $criterion->id => [
                                 'value' => rand(10, 10000),
                                 'employee_id' => $user->userable->id,
