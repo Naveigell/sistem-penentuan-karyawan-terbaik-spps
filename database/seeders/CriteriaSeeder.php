@@ -17,13 +17,37 @@ class CriteriaSeeder extends Seeder
     public function run(): void
     {
         $criterias = [
-            'review', 'absence', 'performance', 'communication', 'teamwork',
+            'review' => [
+                'type'       => CriteriaType::BENEFIT,
+                'weight'     => 20,
+                'value_type' => CriteriaValueType::NOMINAL,
+            ],
+            'absence' => [
+                'type'       => CriteriaType::COST,
+                'weight'     => 10,
+                'value_type' => CriteriaValueType::NOMINAL,
+            ],
+            'performance' => [
+                'type'       => CriteriaType::BENEFIT,
+                'weight'     => 15,
+                'value_type' => CriteriaValueType::NOMINAL,
+            ],
+            'communication' => [
+                'type'       => CriteriaType::BENEFIT,
+                'weight'     => 15,
+                'value_type' => CriteriaValueType::NOMINAL,
+            ],
+            'teamwork' => [
+                'type'       => CriteriaType::BENEFIT,
+                'weight'     => 15,
+                'value_type' => CriteriaValueType::NOMINAL,
+            ],
         ];
 
-        foreach ($criterias as $name) {
-            $valueType    = CriteriaValueType::random();
-            $type         = CriteriaType::random()->value;
-            $weight       = rand(1, 20);
+        foreach ($criterias as $name => $value) {
+            $valueType    = $value['value_type'];
+            $type         = $value['type']->value;
+            $weight       = $value['weight'];
 
             $criteria = Criteria::create(array_merge(compact('name', 'type', 'weight'), [
                 'value_type' => $valueType->value,

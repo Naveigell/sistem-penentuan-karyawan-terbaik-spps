@@ -41,7 +41,7 @@ class UserCriteriaSeeder extends Seeder
                     } else {
                         $user->criteriaValues()->syncWithoutDetaching([
                             $criterion->id => [
-                                'value' => rand(10, 10000),
+                                'value' => rand(2, 20),
                                 'employee_id' => $user->userable->id,
                             ]
                         ]);
