@@ -33,7 +33,10 @@ class TopsisController extends Controller
             "values" => $employee->resolveValues($criteria),
         ])->toArray();
 
+        $precision = 5;
+
         $topsis = new Topsis($employeeData, $criteriaData);
+        $topsis->setPrecision($precision);
         $topsis->calculate();
 
         $normalizations         = $topsis->getNormalization();
@@ -51,7 +54,8 @@ class TopsisController extends Controller
             'weightedNormalizations',
             'idealSolutions',
             'idealSolutionResults',
-            'averages'
+            'averages',
+            'precision'
         ));
     }
 

@@ -7,6 +7,9 @@
         <div class="card">
             <div class="card-header">
                 <h4>Topsis</h4>
+                <div class="card-header-action">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#average-step-modal">Show Step</button>
+                </div>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
@@ -55,6 +58,9 @@
         <div class="card">
             <div class="card-header">
                 <h4>Normalization</h4>
+                <div class="card-header-action">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#normalization-step-modal">Show Step</button>
+                </div>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
@@ -87,6 +93,9 @@
         <div class="card">
             <div class="card-header">
                 <h4>Weighted Normalization</h4>
+                <div class="card-header-action">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#weighted-normalization-step-modal">Show Step</button>
+                </div>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
@@ -119,6 +128,9 @@
         <div class="card">
             <div class="card-header">
                 <h4>Ideal Solutions</h4>
+                <div class="card-header-action">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#ideal-solution-step-modal">Show Step</button>
+                </div>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
@@ -150,7 +162,10 @@
     <div class="col-lg-12 col-md-12 col-12 col-sm-12 no-padding-margin">
         <div class="card">
             <div class="card-header">
-                <h4>Ideal Solutions</h4>
+                <h4>Ideal Solution Distances</h4>
+                <div class="card-header-action">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#ideal-solution-distance-step-modal">Show Step</button>
+                </div>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
@@ -208,4 +223,12 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('content-modal')
+    @include('admin.includes.decision_support_system.topsis.average_modal', compact('normalizations', 'employees', 'averages'))
+    @include('admin.includes.decision_support_system.topsis.normalization_modal', compact('normalizations', 'employees', 'averages', 'precision'))
+    @include('admin.includes.decision_support_system.topsis.weighted_normalization_modal', compact('normalizations', 'employees', 'averages', 'precision'))
+    @include('admin.includes.decision_support_system.topsis.ideal_solutions', compact('normalizations', 'employees', 'averages', 'precision', 'idealSolutions'))
+    @include('admin.includes.decision_support_system.topsis.ideal_solution_distances', compact('normalizations', 'employees', 'averages', 'precision', 'idealSolutions', 'idealSolutionResults', 'weightedNormalizations'))
 @endsection
