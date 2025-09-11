@@ -8,7 +8,7 @@
             <div class="card-header">
                 <h4>Topsis</h4>
                 <div class="card-header-action">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#average-step-modal">Show Step</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#average-step-modal">Lihat Perhitungan</button>
                 </div>
             </div>
             <div class="card-body p-0">
@@ -16,7 +16,7 @@
                     <table class="table table-striped mb-0">
                         <thead>
                         <tr>
-                            <th>Employee</th>
+                            <th>Karyawan</th>
                             @foreach($criteria as $criterion)
                                 <th>{{ $criterion->name }} ({{ $criterion->alphabet() }})</th>
                             @endforeach
@@ -42,9 +42,9 @@
                                 </tr>
                             @endforeach
                             <tr>
-                                <td>Average</td>
+                                <td class="text-primary">Rata - Rata</td>
                                 @foreach($criteria as $index => $criterion)
-                                    <td>{{ $averages[$index] }}</td>
+                                    <td class="text-primary">{{ $averages[$index] }}</td>
                                 @endforeach
                             </tr>
                         </tbody>
@@ -57,9 +57,9 @@
     <div class="col-lg-12 col-md-12 col-12 col-sm-12 no-padding-margin">
         <div class="card">
             <div class="card-header">
-                <h4>Normalization</h4>
+                <h4>Normalisasi</h4>
                 <div class="card-header-action">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#normalization-step-modal">Show Step</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#normalization-step-modal">Lihat Perhitungan</button>
                 </div>
             </div>
             <div class="card-body p-0">
@@ -67,7 +67,7 @@
                     <table class="table table-striped mb-0">
                         <thead>
                         <tr>
-                            <th>Employee</th>
+                            <th>Karyawan</th>
                             @foreach($criteria as $criterion)
                                 <th>{{ $criterion->name }} ({{ $criterion->alphabet() }})</th>
                             @endforeach
@@ -92,9 +92,9 @@
     <div class="col-lg-12 col-md-12 col-12 col-sm-12 no-padding-margin">
         <div class="card">
             <div class="card-header">
-                <h4>Weighted Normalization</h4>
+                <h4>Normalisasi dengan Bobot</h4>
                 <div class="card-header-action">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#weighted-normalization-step-modal">Show Step</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#weighted-normalization-step-modal">Lihat Perhitungan</button>
                 </div>
             </div>
             <div class="card-body p-0">
@@ -102,7 +102,7 @@
                     <table class="table table-striped mb-0">
                         <thead>
                         <tr>
-                            <th>Employee</th>
+                            <th>Karyawan</th>
                             @foreach($criteria as $criterion)
                                 <th>{{ $criterion->name }} ({{ $criterion->alphabet() }})</th>
                             @endforeach
@@ -127,9 +127,9 @@
     <div class="col-lg-12 col-md-12 col-12 col-sm-12 no-padding-margin">
         <div class="card">
             <div class="card-header">
-                <h4>Ideal Solutions</h4>
+                <h4>Solusi Ideal</h4>
                 <div class="card-header-action">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#ideal-solution-step-modal">Show Step</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#ideal-solution-step-modal">Lihat Perhitungan</button>
                 </div>
             </div>
             <div class="card-body p-0">
@@ -137,7 +137,7 @@
                     <table class="table table-striped mb-0">
                         <thead>
                         <tr>
-                            <th>Solution</th>
+                            <th>#</th>
                             @foreach($criteria as $criterion)
                                 <th>{{ $criterion->name }} ({{ $criterion->alphabet() }})</th>
                             @endforeach
@@ -162,9 +162,9 @@
     <div class="col-lg-12 col-md-12 col-12 col-sm-12 no-padding-margin">
         <div class="card">
             <div class="card-header">
-                <h4>Ideal Solution Distances</h4>
+                <h4>Jarak Solusi Ideal</h4>
                 <div class="card-header-action">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#ideal-solution-distance-step-modal">Show Step</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#ideal-solution-distance-step-modal">Lihat Perhitungan</button>
                 </div>
             </div>
             <div class="card-body p-0">
@@ -172,7 +172,7 @@
                     <table class="table table-striped mb-0">
                         <thead>
                         <tr>
-                            <th>Employee</th>
+                            <th>Karyawan</th>
                             @foreach($idealSolutionResults as $key => $result)
                                 <th>{{ ucwords($key) }}</th>
                             @endforeach
@@ -197,9 +197,9 @@
     <div class="col-lg-12 col-md-12 col-12 col-sm-12 no-padding-margin">
         <div class="card">
             <div class="card-header">
-                <h4>Result</h4>
+                <h4>Rangking</h4>
                 <div class="card-header-action">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#rank-result-step-modal">Show Step</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#rank-result-step-modal">Lihat Perhitungan</button>
                 </div>
             </div>
             <div class="card-body p-0">
@@ -207,9 +207,9 @@
                     <table class="table table-striped mb-0">
                         <thead>
                         <tr>
-                            <th>Rank</th>
-                            <th>Employee</th>
-                            <th>Result</th>
+                            <th>Ranking</th>
+                            <th>Karyawan</th>
+                            <th>Hasil</th>
                         </tr>
                         </thead>
                         <tbody>

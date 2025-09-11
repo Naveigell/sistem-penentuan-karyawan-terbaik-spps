@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('content-title', 'Criteria')
+@section('content-title', 'Kriteria')
 
 @section('content-body')
     @if ($message = session()->get('success'))
@@ -11,7 +11,7 @@
             @csrf
             <div class="card">
                 <div class="card-header">
-                    <h4>Criteria</h4>
+                    <h4>Kriteria</h4>
                 </div>
                 <div class="card-body">
                     <div class="row container">

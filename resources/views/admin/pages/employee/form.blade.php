@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('content-title', 'Employee')
+@section('content-title', 'Karyawan')
 
 @section('content-body')
     <div class="col-12 col-md-12 col-lg-12 no-padding-margin">
@@ -9,11 +9,11 @@
                 @csrf
                 @method(@$employee ? 'PUT' : 'POST')
                 <div class="card-header">
-                    <h4>Employee Form</h4>
+                    <h4>Form Karyawan</h4>
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label>Name</label>
+                        <label>Nama</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', @$employee ? $employee->user->name : '') }}">
                         @error('name')
                         <div class="invalid-feedback">
@@ -40,7 +40,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Phone</label>
+                        <label>No Telp</label>
                         <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone', @$employee ? $employee->phone : '') }}">
                         @error('phone')
                         <div class="invalid-feedback">
@@ -49,7 +49,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Address</label>
+                        <label>Alamat</label>
                         <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address', @$employee ? $employee->address : '') }}">
                         @error('address')
                         <div class="invalid-feedback">

@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Admin\DecisionSupportSystem;
 use App\Http\Controllers\Controller;
 use App\Models\Criteria;
 use App\Models\Employee;
+use App\Models\EmployeeCriteriaOption;
+use App\Models\EmployeeCriteriaValue;
 use App\Utils\DecisionSupportSystem\Topsis;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TopsisController extends Controller
 {
@@ -18,7 +21,19 @@ class TopsisController extends Controller
     public function index()
     {
         $criteria  = Criteria::all();
-        $employees = Employee::with('criteriaOptions.criteriaOption', 'criteriaValues', 'user')->get();
+        $employees = Employee::with('criteriaOptions.criteriaOption', 'criteriaValues', 'user')
+            ->addSelect([
+                'total_option' => EmployeeCriteriaOption::selectRaw('COUNT(*)')->whereColumn('employees.id', 'employee_criteria_options.employee_id'),
+                'total_values' => EmployeeCriteriaValue::selectRaw('COUNT(*)')->whereColumn('employees.id', 'employee_criteria_values.employee_id'),
+            ])
+            ->get();
+
+        // check if employee has filled all criteria
+        foreach ($employees as $employee) {
+            if ($employee->total_option + $employee->total_values < $criteria->count()) {
+                return redirect(route('admin.employees.index'))->with('error', 'Tolong lengkapi data kriteria pada karyawan : ' . $employee->user->name);
+            }
+        }
 
         $criteriaData = $criteria->map(fn(Criteria $criteria) => [
             "id"     => $criteria->id,

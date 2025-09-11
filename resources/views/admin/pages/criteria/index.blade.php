@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('content-title', 'Criteria')
+@section('content-title', 'Kriteria')
 
 @section('content-body')
     @if ($message = session()->get('success'))
@@ -9,9 +9,9 @@
     <div class="col-lg-12 col-md-12 col-12 col-sm-12 no-padding-margin">
         <div class="card">
             <div class="card-header">
-                <h4>Criteria</h4>
+                <h4>Kriteria</h4>
                 <div class="card-header-action">
-                    <a href="{{ route('admin.criteria.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Add Criterion</a>
+                    <a href="{{ route('admin.criteria.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Kriteria</a>
                 </div>
             </div>
             <div class="card-body p-0">
@@ -20,11 +20,11 @@
                         <thead>
                         <tr>
                             <th class="col-1">No</th>
-                            <th class="col-2">Name</th>
-                            <th class="col-2">Weight</th>
-                            <th class="col-2">Type</th>
-                            <th class="col-2">Value Type</th>
-                            <th class="col-2">Action</th>
+                            <th class="col-2">Nama</th>
+                            <th class="col-2">Bobot</th>
+                            <th class="col-2">Tipe</th>
+                            <th class="col-2">Tipe Nilai</th>
+                            <th class="col-2">Aksi</th>
                         </tr>
                         </thead>
                         <tbody>

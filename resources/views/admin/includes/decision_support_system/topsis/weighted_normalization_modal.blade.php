@@ -1,5 +1,5 @@
 <x-modal.base id="weighted-normalization-step-modal">
-    <x-slot:title>Weighted Normalization Step</x-slot:title>
+    <x-slot:title>Perhitungan Normalisasi dengan Bobot Kriteria</x-slot:title>
     <x-slot:body>
         @foreach($employees as $employee)
             <div class="d-block">

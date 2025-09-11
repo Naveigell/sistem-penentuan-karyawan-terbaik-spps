@@ -65,7 +65,7 @@ class EmployeeCriteriaController extends Controller
             dd($exception->getMessage());
         }
 
-        return redirect(route('admin.employees.criteria.index', $employee))->with('success', 'Criteria updated successfully');
+        return redirect(route('admin.employees.criteria.index', $employee))->with('success', 'Kriteria berhasil disimpan');
     }
 
     /**

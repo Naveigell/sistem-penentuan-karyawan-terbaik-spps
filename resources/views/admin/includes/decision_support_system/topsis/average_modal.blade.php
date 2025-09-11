@@ -1,5 +1,5 @@
 <x-modal.base id="average-step-modal">
-    <x-slot:title>Average Step</x-slot:title>
+    <x-slot:title>Perhitungan Rata - Rata</x-slot:title>
     <x-slot:body>
         @php
             $sum = 0;

@@ -48,7 +48,7 @@ class EmployeeController extends Controller
             dd($exception->getMessage());
         }
 
-        return redirect(route('admin.employees.index'))->with('success', 'Employee created successfully');
+        return redirect(route('admin.employees.index'))->with('success', 'Karyawan berhasil dibuat');
     }
 
     /**
@@ -86,7 +86,7 @@ class EmployeeController extends Controller
             dd($exception->getMessage());
         }
 
-        return redirect(route('admin.employees.index'))->with('success', 'Employee updated successfully');
+        return redirect(route('admin.employees.index'))->with('success', 'Karyawan berhasil diupdate');
     }
 
     /**
@@ -94,6 +94,8 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+
+        return redirect(route('admin.employees.index'))->with('success', 'Karyawan berhasil dihapus');
     }
 }

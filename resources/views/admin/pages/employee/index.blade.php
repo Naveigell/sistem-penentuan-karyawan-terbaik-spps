@@ -1,17 +1,20 @@
 @extends('layouts.admin.admin')
 
-@section('content-title', 'Employee')
+@section('content-title', 'Karyawan')
 
 @section('content-body')
     @if ($message = session()->get('success'))
         <x-alert.success :message="$message"></x-alert.success>
     @endif
+    @if ($message = session()->get('error'))
+        <x-alert.danger :message="$message"></x-alert.danger>
+    @endif
     <div class="col-lg-12 col-md-12 col-12 col-sm-12 no-padding-margin">
         <div class="card">
             <div class="card-header">
-                <h4>Employee</h4>
+                <h4>Karyawan</h4>
                 <div class="card-header-action">
-                    <a href="{{ route('admin.employees.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Add Employee</a>
+                    <a href="{{ route('admin.employees.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Kriteria</a>
                 </div>
             </div>
             <div class="card-body p-0">
@@ -20,11 +23,11 @@
                         <thead>
                         <tr>
                             <th class="col-1">No</th>
-                            <th class="col-2">Name</th>
+                            <th class="col-2">Nama</th>
                             <th class="col-2">Email</th>
-                            <th class="col-2">Phone</th>
-                            <th class="col-2">Address</th>
-                            <th class="col-2">Action</th>
+                            <th class="col-2">No Telp</th>
+                            <th class="col-2">Alamat</th>
+                            <th class="col-2">Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -59,5 +62,5 @@
 @endsection
 
 @section('content-modal')
-    <x-modal.delete :name="'Employee'"></x-modal.delete>
+    <x-modal.delete :name="'Karyawan'"></x-modal.delete>
 @endsection

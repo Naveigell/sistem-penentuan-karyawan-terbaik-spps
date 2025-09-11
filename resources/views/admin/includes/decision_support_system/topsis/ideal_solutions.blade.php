@@ -1,5 +1,5 @@
 <x-modal.base id="ideal-solution-step-modal">
-    <x-slot:title>Ideal Solution Step</x-slot:title>
+    <x-slot:title>Perhitungan Solusi Ideal</x-slot:title>
     <x-slot:body>
         @foreach($idealSolutions as $key => $idealSolution)
             <div class="d-block">

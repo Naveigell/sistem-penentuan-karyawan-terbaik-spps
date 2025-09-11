@@ -1,5 +1,5 @@
 <x-modal.base id="rank-result-step-modal">
-    <x-slot:title>Rank Step <sub>(will be ranked by result)</sub></x-slot:title>
+    <x-slot:title>Perhitungan Rangking <sub>(akan di rangking dari hasil)</sub></x-slot:title>
     <x-slot:body>
         @foreach($employees as $employeeIndex => $employee)
             <div class="d-block">

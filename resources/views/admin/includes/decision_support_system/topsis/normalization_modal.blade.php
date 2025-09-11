@@ -1,5 +1,5 @@
 <x-modal.base id="normalization-step-modal">
-    <x-slot:title>Normalization Step</x-slot:title>
+    <x-slot:title>Perhitungan Normalisasi</x-slot:title>
     <x-slot:body>
         @foreach($criteria as $index => $criterion)
             <div class="d-block">

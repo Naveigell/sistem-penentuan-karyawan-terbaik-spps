@@ -22,27 +22,27 @@ class CriteriaSeeder extends Seeder
                 'weight'     => 20,
                 'value_type' => CriteriaValueType::NOMINAL,
             ],
-            'Sick Absence' => [
+            'Absen Sakit' => [
                 'type'       => CriteriaType::COST,
                 'weight'     => 10,
                 'value_type' => CriteriaValueType::NOMINAL,
             ],
-            'Leave Absence' => [
+            'Absen Cuti' => [
                 'type'       => CriteriaType::COST,
                 'weight'     => 10,
                 'value_type' => CriteriaValueType::NOMINAL,
             ],
-            'Work Hour' => [
+            'Jam Kerja' => [
                 'type'       => CriteriaType::BENEFIT,
                 'weight'     => 40,
                 'value_type' => CriteriaValueType::NOMINAL,
             ],
-            'Late' => [
+            'Telat' => [
                 'type'       => CriteriaType::COST,
                 'weight'     => 10,
                 'value_type' => CriteriaValueType::NOMINAL,
             ],
-            'Sales Target' => [
+            'Target Penjualan' => [
                 'type'       => CriteriaType::BENEFIT,
                 'weight'     => 10,
                 'value_type' => CriteriaValueType::NOMINAL,
