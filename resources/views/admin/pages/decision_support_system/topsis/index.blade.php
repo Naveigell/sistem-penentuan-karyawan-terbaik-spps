@@ -198,6 +198,9 @@
         <div class="card">
             <div class="card-header">
                 <h4>Result</h4>
+                <div class="card-header-action">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#rank-result-step-modal">Show Step</button>
+                </div>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
@@ -231,4 +234,5 @@
     @include('admin.includes.decision_support_system.topsis.weighted_normalization_modal', compact('normalizations', 'employees', 'averages', 'precision'))
     @include('admin.includes.decision_support_system.topsis.ideal_solutions', compact('normalizations', 'employees', 'averages', 'precision', 'idealSolutions'))
     @include('admin.includes.decision_support_system.topsis.ideal_solution_distances', compact('normalizations', 'employees', 'averages', 'precision', 'idealSolutions', 'idealSolutionResults', 'weightedNormalizations'))
+    @include('admin.includes.decision_support_system.topsis.rank_result', compact('normalizations', 'employees', 'averages', 'precision', 'idealSolutions', 'idealSolutionResults', 'weightedNormalizations'))
 @endsection
