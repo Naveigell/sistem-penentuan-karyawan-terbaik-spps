@@ -44,11 +44,15 @@ class EmployeeCriteriaController extends Controller
         try {
             foreach ($criteria as $criterion) {
                 if ($criterion->value_type->isOption()) {
-                    $employee->criteriaOptions()->where('criteria_id', $criterion->id)->update([
+                    $employee->criteriaOptions()->updateOrCreate([
+                        'criteria_id' => $criterion->id,
+                    ], [
                         'criteria_option_id' => $request->validated('criteria.' . $criterion->id),
                     ]);
                 } else {
-                    $employee->criteriaValues()->where('criteria_id', $criterion->id)->update([
+                    $employee->criteriaValues()->updateOrCreate([
+                        'criteria_id' => $criterion->id,
+                    ], [
                         'value' => $request->validated('criteria.' . $criterion->id),
                     ]);
                 }

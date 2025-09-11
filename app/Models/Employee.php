@@ -10,6 +10,10 @@ class Employee extends Model
 {
     use SoftDeletes;
 
+    protected $fillable = [
+        'phone', 'address',
+    ];
+
     /**
      * Resolve the values of an employee for given criteria
      *

@@ -17,31 +17,36 @@ class CriteriaSeeder extends Seeder
     public function run(): void
     {
         $criterias = [
-            'review' => [
+            'Review' => [
                 'type'       => CriteriaType::BENEFIT,
                 'weight'     => 20,
                 'value_type' => CriteriaValueType::NOMINAL,
             ],
-            'absence' => [
+            'Sick Absence' => [
                 'type'       => CriteriaType::COST,
                 'weight'     => 10,
                 'value_type' => CriteriaValueType::NOMINAL,
             ],
-            'performance' => [
-                'type'       => CriteriaType::BENEFIT,
-                'weight'     => 15,
+            'Leave Absence' => [
+                'type'       => CriteriaType::COST,
+                'weight'     => 10,
                 'value_type' => CriteriaValueType::NOMINAL,
             ],
-            'communication' => [
+            'Work Hour' => [
                 'type'       => CriteriaType::BENEFIT,
-                'weight'     => 15,
+                'weight'     => 40,
                 'value_type' => CriteriaValueType::NOMINAL,
             ],
-            'teamwork' => [
-                'type'       => CriteriaType::BENEFIT,
-                'weight'     => 15,
+            'Late' => [
+                'type'       => CriteriaType::COST,
+                'weight'     => 10,
                 'value_type' => CriteriaValueType::NOMINAL,
             ],
+            'Sales Target' => [
+                'type'       => CriteriaType::BENEFIT,
+                'weight'     => 10,
+                'value_type' => CriteriaValueType::NOMINAL,
+            ]
         ];
 
         foreach ($criterias as $name => $value) {
