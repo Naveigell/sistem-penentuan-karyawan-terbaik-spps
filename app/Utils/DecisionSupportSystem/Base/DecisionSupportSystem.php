@@ -60,7 +60,7 @@ abstract class DecisionSupportSystem
                 throw new \Exception('Criteria must have a type such like cost or benefit');
             }
 
-            if (!in_array($criterion['type'], [CriteriaType::COST->value, CriteriaType::BENEFIT->value])) {
+            if (!CriteriaType::isInCases($criterion['type'])) {
                 throw new \Exception('Criteria type must be cost or benefit');
             }
         }

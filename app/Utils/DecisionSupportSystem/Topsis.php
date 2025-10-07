@@ -37,11 +37,11 @@ class Topsis extends DecisionSupportSystem
         foreach ($this->criteria as $index => $criterion) {
             foreach ($this->alternatives as $alternative) {
                 // sum the Aᵢ² values for each criterion
-                $averages[$index] += round(pow($alternative['values'][$index], 2), $this->precision);
+                $averages[$index] += round(pow($alternative['values'][$index], 2), $this->precision, PHP_ROUND_HALF_UP);
             }
 
             // and then calculate the square root of the sum
-            $averages[$index] = round(sqrt($averages[$index]), $this->precision);
+            $averages[$index] = round(sqrt($averages[$index]), $this->precision, PHP_ROUND_HALF_UP);
         }
 
         // store the averages to easy access
@@ -53,7 +53,7 @@ class Topsis extends DecisionSupportSystem
         // than calculate with Aᵢⱼ / A̅ⱼ formula.
         foreach ($this->alternatives as $alternative) {
             foreach ($alternative['values'] as $index => $value) {
-                $normalizations[$alternative['id']][$index] = round($value / $averages[$index], $this->precision);
+                $normalizations[$alternative['id']][$index] = round($value / $averages[$index], $this->precision, PHP_ROUND_HALF_UP);
             }
         }
 
@@ -67,7 +67,7 @@ class Topsis extends DecisionSupportSystem
         // the formula is Aᵢⱼ * wⱼ
         foreach ($normalizations as $normalizationIndex => $normalization) {
             foreach ($this->criteria as $criterionIndex => $criterion) {
-                $normalizationsWeighted[$normalizationIndex][$criterionIndex] = round($normalization[$criterionIndex] * $criterion['weight'], $this->precision);
+                $normalizationsWeighted[$normalizationIndex][$criterionIndex] = round($normalization[$criterionIndex] * $criterion['weight'], $this->precision, PHP_ROUND_HALF_UP);
             }
         }
 
@@ -116,8 +116,8 @@ class Topsis extends DecisionSupportSystem
 
             // calculate the square root of the sum of the squared distances
             // the formula is sqrt((Aᵢⱼ - A̅⁺ⱼ)²)
-            $alternativePositiveIdeals[$normalizationIndex] = round(sqrt($alternativePositiveIdeals[$normalizationIndex]), $this->precision);
-            $alternativeNegativeIdeals[$normalizationIndex] = round(sqrt($alternativeNegativeIdeals[$normalizationIndex]), $this->precision);
+            $alternativePositiveIdeals[$normalizationIndex] = round(sqrt($alternativePositiveIdeals[$normalizationIndex]), $this->precision, PHP_ROUND_HALF_UP);
+            $alternativeNegativeIdeals[$normalizationIndex] = round(sqrt($alternativeNegativeIdeals[$normalizationIndex]), $this->precision, PHP_ROUND_HALF_UP);
         }
 
         $this->idealSolutionResults['positive'] = $alternativePositiveIdeals;
@@ -126,7 +126,7 @@ class Topsis extends DecisionSupportSystem
         // looping the alternatives to give results into it,
         // the formula is
         foreach ($this->alternatives as $index => &$alternative) {
-            $alternative["result"] = round($alternativeNegativeIdeals[$index] / ($alternativePositiveIdeals[$index] + $alternativeNegativeIdeals[$index]), $this->precision);
+            $alternative["result"] = round($alternativeNegativeIdeals[$index] / ($alternativePositiveIdeals[$index] + $alternativeNegativeIdeals[$index]), $this->precision, PHP_ROUND_HALF_UP);
         }
     }
 
