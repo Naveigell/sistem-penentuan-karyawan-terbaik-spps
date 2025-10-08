@@ -13,5 +13,6 @@ Route::name('admin.')->prefix('admin')->group(function () {
 
     Route::name('decision-support-systems.')->prefix('decision-support-systems')->group(function () {
         Route::resource('topsis', \App\Http\Controllers\Admin\DecisionSupportSystem\TopsisController::class)->only('index');
+        Route::resource('copeland', \App\Http\Controllers\Admin\DecisionSupportSystem\CopelandController::class)->only('index');
     });
 });

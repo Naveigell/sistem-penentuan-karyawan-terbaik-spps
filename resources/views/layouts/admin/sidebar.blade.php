@@ -14,6 +14,7 @@
             <li class="@if (request()->routeIs('admin.employees.*')) active @endif"><a class="nav-link" href="{{ route('admin.employees.index') }}"><i class="fas fa-users"></i> <span>Karyawan</span></a></li>
             <li class="menu-header">Kalkulasi</li>
             <li class="@if (request()->routeIs('admin.decision-support-systems.topsis.*')) active @endif"><a class="nav-link" href="{{ route('admin.decision-support-systems.topsis.index') }}"><i class="fas fa-star"></i> <span>Topsis</span></a></li>
+            <li class="@if (request()->routeIs('admin.decision-support-systems.copeland.*')) active @endif"><a class="nav-link" href="{{ route('admin.decision-support-systems.copeland.index') }}"><i class="fas fa-landmark"></i> <span>Copeland</span></a></li>
 {{--            <li class="@if (request()->routeIs('admin.calcultions.simple-additive-weightings.*')) active @endif"><a class="nav-link" href="{{ route('admin.calcultions.simple-additive-weightings.index') }}"><i class="fa fa-leaf"></i> <span>SAW</span></a></li>--}}
 {{--            <li class="@if (request()->routeIs('admin.calcultions.mooras.*')) active @endif"><a class="nav-link" href="{{ route('admin.calcultions.mooras.index') }}"><i class="fa fa-history"></i> <span>Moora</span></a></li>--}}
 {{--            <li class="@if (request()->routeIs('admin.matrix.*')) active @endif"><a class="nav-link" href="{{ route('admin.matrix.index') }}"><i class="fas fa-list-ol"></i> <span>Matriks</span></a></li>--}}
